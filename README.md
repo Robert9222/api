@@ -1,6 +1,5 @@
 Aplikacja do Zarządzania Kodami Promocyjnymi
 
-
 Aplikacja do Zarządzania Kodami Promocyjnymi to narzędzie webowe umożliwiające tworzenie, modyfikowanie, deaktywację i usuwanie kodów promocyjnych. Aplikacja ta została zbudowana z wykorzystaniem Symfony 7 i PHP 8, oferując proste i intuicyjne API RESTowe do zarządzania kodami.
 
 Funkcje
@@ -32,7 +31,11 @@ Upewnij się, że ciąg połączenia z bazą danych w pliku .env jest poprawnie 
 
 Endpoints API
 POST /promo-code/add: Dodaj nowy kod promocyjny.
+
 POST /promo-code/edit/{id}: Edytuj kod promocyjny.
+
 POST /promo-code/deactivate/{id}: Dezaktywuj kod promocyjny.
+
 GET /promo-code/{id}: Wyświetl szczegóły kodu promocyjnego.
+
 DELETE /promo-code/delete/{id}: Usuń kod promocyjny.
