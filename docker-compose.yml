@@ -1,0 +1,21 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+###> doctrine/doctrine-bundle ###
+  database:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_DATABASE: promotion_code
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
