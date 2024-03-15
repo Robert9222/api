@@ -26,9 +26,6 @@ To polecenie zbuduje i uruchomi kontenery Docker zdefiniowane w docker-compose.y
 Instalacja Zależności
 docker-compose exec app composer install
 
-Konfiguracja Bazy Danych
-Upewnij się, że ciąg połączenia z bazą danych w pliku .env jest poprawnie skonfigurowany do użycia z kontenerem MySQL.
-
 Endpoints API
 POST /promo-code/add: Dodaj nowy kod promocyjny.
 
