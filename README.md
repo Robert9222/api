@@ -1,6 +1,6 @@
 Aplikacja do Zarządzania Kodami Promocyjnymi
 
-Aplikacja do Zarządzania Kodami Promocyjnymi to narzędzie webowe umożliwiające tworzenie, modyfikowanie, deaktywację i usuwanie kodów promocyjnych. Aplikacja ta została zbudowana z wykorzystaniem Symfony 7 i PHP 8, oferując proste i intuicyjne API RESTowe do zarządzania kodami.
+Aplikacja do Zarządzania Kodami Promocyjnymi to narzędzie webowe umożliwiające tworzenie, modyfikowanie, deaktywację i usuwanie kodów promocyjnych. Aplikacja ta została zbudowana z wykorzystaniem Symfony 7 i PHP 8, API RESTowe do zarządzania kodami.
 
 Funkcje
 Dodawanie Nowego Kodu: Umożliwia tworzenie nowego kodu promocyjnego.
@@ -23,8 +23,8 @@ W głównym katalogu projektu wykonaj:
 docker-compose up -d
 To polecenie zbuduje i uruchomi kontenery Docker zdefiniowane w docker-compose.yml, w tym kontener dla Symfony i MySQL.
 
-Instalacja Zależności
-docker-compose exec app composer install
+Uruchomienie testów
+php bin/phpunit
 
 Endpoints API
 POST /promo-code/add: Dodaj nowy kod promocyjny.
