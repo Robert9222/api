@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\PromoCode;
+use App\Entity\PromoCodeHistory;
 use App\Repository\PromoCodeRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -22,6 +23,8 @@ class PromoCodeService
     {
         $promoCode = new PromoCode($name, $code, $displayLimit);
         $this->entityManager->persist($promoCode);
+        $history = new PromoCodeHistory($promoCode, 'create', "create code");
+        $this->entityManager->persist($history);
         $this->entityManager->flush();
 
         return $promoCode;
@@ -30,7 +33,10 @@ class PromoCodeService
     public function updatePromoCode(int $id, string $newName): PromoCode
     {
         $promoCode = $this->getPromoCode($id);
+        $originalName = $promoCode->getName();
         $promoCode->setName($newName);
+        $history = new PromoCodeHistory($promoCode, 'update', "Name changed from $originalName to $newName");
+        $this->entityManager->persist($history);
         $this->entityManager->flush();
 
         return $promoCode;
@@ -40,6 +46,8 @@ class PromoCodeService
     {
         $promoCode = $this->getPromoCode($id);
         $promoCode->deactivate();
+        $history = new PromoCodeHistory($promoCode, 'deactivate', "Code deactivation");
+        $this->entityManager->persist($history);
         $this->entityManager->flush();
 
         return $promoCode;
@@ -49,6 +57,8 @@ class PromoCodeService
     {
         $promoCode = $this->getPromoCode($id);
         $this->entityManager->remove($promoCode);
+        $history = new PromoCodeHistory($promoCode, 'delete', "Code delete");
+        $this->entityManager->persist($history);
         $this->entityManager->flush();
     }
 
@@ -59,7 +69,8 @@ class PromoCodeService
         if (!$promoCode) {
             throw new NotFoundHttpException("Promo code not found.");
         }
-
+        $history = new PromoCodeHistory($promoCode, 'get', "Get Code");
+        $this->entityManager->persist($history);
         return $promoCode;
     }
 

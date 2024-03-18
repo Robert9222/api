@@ -33,5 +33,4 @@ class PromoCodeRepository extends ServiceEntityRepository
         $existingCode = $this->findOneBy(['code' => $code]);
         return $existingCode === null;
     }
-
 }

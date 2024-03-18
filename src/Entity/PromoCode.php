@@ -113,5 +113,4 @@ class PromoCode
     {
         $this->updatedAt = new DateTime();
     }
-
 }
